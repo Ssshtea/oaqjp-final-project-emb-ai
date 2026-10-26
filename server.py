@@ -12,18 +12,18 @@ def emo_detector():
 
     response = emotion_detector(text_to_analyze)
 
-    anger = response['anger']
-    disgust = response['disgust']
-    fear = response['fear']
-    joy = response['joy']
-    sadness = response['sadness']
-    dominant_emotion = response['dominant_emotion']
+    # Blank or invalid input: dominant_emotion is None
+    if response['dominant_emotion'] is None:
+        return "Invalid text! Please try again!"
 
     return (
         f"For the given statement, the system response is "
-        f"'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, "
-        f"'joy': {joy} and 'sadness': {sadness}. "
-        f"The dominant emotion is {dominant_emotion}."
+        f"'anger': {response['anger']}, "
+        f"'disgust': {response['disgust']}, "
+        f"'fear': {response['fear']}, "
+        f"'joy': {response['joy']} and "
+        f"'sadness': {response['sadness']}. "
+        f"The dominant emotion is {response['dominant_emotion']}."
     )
 
 
